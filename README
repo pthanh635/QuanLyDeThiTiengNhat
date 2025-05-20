@@ -1,0 +1,58 @@
+# Quản Lý Ngân Hàng Đề Thi Tiếng Nhật
+
+Đây là một ứng dụng Java dùng để quản lý ngân hàng đề thi môn tiếng Nhật.
+Vì đây là chương trình có sử dụng AI nên cần phải có kết nối Internet.
+
+Hướng Dẫn Sử Dụng chương trình:
+1. Cài đặt:
+	- Tải và cài đặt Eclipse IDE
+	- Cài đặt JDK
+2. Cơ Sở Dữ Liệu:
+	- Cài đặt MySQL và chạy dòng lệnh sau:
+		CREATE DATABASE dethi_tiengnhat CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+		
+		USE dethi_tiengnhat;
+		
+		CREATE TABLE cau_hoi (
+		    id INT AUTO_INCREMENT PRIMARY KEY,
+		    noi_dung TEXT,
+		    dap_an_dung VARCHAR(255),
+		    dap_an_sai1 VARCHAR(255),
+		    dap_an_sai2 VARCHAR(255),
+		    dap_an_sai3 VARCHAR(255),
+		    loai_cau_hoi ENUM('text', 'nghe') DEFAULT 'text',
+		    duong_dan_am_thanh VARCHAR(500)
+		);
+	- Sau đó vào DAO/DBConnection.java trong project đổi URL, USERNAME, PASSWORD để kết nối đến cơ sở dữ liệu.
+3. Các Thư Viện ngoài:
+* Tìm và tải các thư viện .jar trên internet để chạy chương trình:
+	- mysql-connector-j-8.4.0.jar
+	- itextpdf-5.5.13.3.jar
+	- okhttp-4.9.1.jar
+	- okio-2.10.0.jar
+	- kotlin-stdlib-1.8.0.jar
+	- json-20230618.jar
+	- jl1.0.1.jar
+	- freetts.jar
+	- cmu_us_kal.jar
+	- cmulex-1.0.jar
+
+4. Font:
+	- Tìm và tải trên internet để xuất file: Noto_Sans_JP.zip
+	- Sau khi tải về: Tìm và Copy file NotoSansJP-Regular.ttf dán vào Font.
+
+5. Key API:
+	- Bạn cần tạo key API và copy key của bạn sau đó vào src/OpenAIUtil dán vào dòng:
+		private static final String API_KEY = "sk-xxx"; //(Thay sk-xxx thành key của bạn).
+	- Thay đổi model thành model của key:
+		String json = "{\n" +
+                "  \"model\": \"gpt-4o-mini\",\n" +
+                "  \"messages\": [\n" +
+                "    {\"role\": \"system\", \"content\": \"Bạn là chuyên gia tạo câu hỏi trắc nghiệm tiếng Nhật.\"},\n" +
+                "    {\"role\": \"user\", \"content\": \"" + prompt.replace("\"", "\\\"") + "\"}\n" +
+                "  ]\n" +
+                "}";
+		(thay gpt-4o-mini thành model của key mà bạn đã tạo).
+6. Tác Giả:
+	- Tên tác giả: Phạm Phú Thạnh.
+	- Email: phuthanhpham2005@gmail.com
