@@ -42,7 +42,7 @@ Hướng Dẫn Sử Dụng chương trình:
 	- Sau khi tải về: Tìm và Copy file NotoSansJP-Regular.ttf dán vào Font.
 
 5. Key API:
-	- Bạn cần tạo key API và copy key của bạn sau đó vào src/OpenAIUtil dán vào dòng:
+	- Bạn cần tạo key API và copy key của bạn sau đó vào src/AI/OpenAIUtil dán vào dòng:
 		private static final String API_KEY = "sk-xxx"; //(Thay sk-xxx thành key của bạn).
 	- Thay đổi model thành model của key:
 		String json = "{\n" +
